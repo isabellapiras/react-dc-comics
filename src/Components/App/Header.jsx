@@ -1,3 +1,16 @@
+const links = [
+    { id: 1, text: 'Characters', href: '#', active: false },
+    { id: 2, text: 'Comics', href: '#', active: true },
+    { id: 3, text: 'Movies', href: '#', active: false },
+    { id: 4, text: 'TV', href: '#', active: false },
+    { id: 5, text: 'Games', href: '#', active: false },
+    { id: 6, text: 'Collectibles', href: '#', active: false },
+    { id: 7, text: 'Videos', href: '#', active: false },
+    { id: 8, text: 'Fans', href: '#', active: false },
+    { id: 9, text: 'News', href: '#', active: false },
+    { id: 10, text: 'Shop', href: '#', active: false },
+];
+
 export default function Header() {
     return (
         <header className="bg-white">
@@ -6,17 +19,18 @@ export default function Header() {
 
                 <nav className="h-full">
                     <ul className="flex gap-8 h-full uppercase text-sm font-bold text-gray-800">
-                        <li className="flex items-center"><a href="#">Characters</a></li>
-                        <li className="flex items-center border-b-4 border-blue-600 text-blue-600"><a href="#">Comics</a></li>
-                        <li className="flex items-center"><a href="#">Movies</a></li>
-                        <li className="flex items-center"><a href="#">TV</a></li>
-                        <li className="flex items-center"><a href="#">Games</a></li>
-                        <li className="flex items-center"><a href="#">Collectibles</a></li>
-                        <li className="flex items-center"><a href="#">Videos</a></li>
-                        <li className="flex items-center"><a href="#">Fans</a></li>
-                        <li className="flex items-center"><a href="#">News</a></li>
-                        <li className="flex items-center"><a href="#">Shop</a></li>
-
+                        {links.map((link) => (
+                            <li
+                                key={link.id}
+                                className={
+                                    link.active
+                                        ? 'flex items-center border-b-4 border-blue-600 text-blue-600'
+                                        : 'flex items-center'
+                                }
+                            >
+                                <a href={link.href}>{link.text}</a>
+                            </li>
+                        ))}
                     </ul>
                 </nav>
             </div>
